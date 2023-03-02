@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+@import url("//cdn.web-fonts.ge/fonts/bpg-arial-caps/css/bpg-arial-caps.min.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "BPG Arial Caps", sans-serif;
+    background-color: #090908;
+  }
+
+  .pagination a {
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid #272b2a;
+    color: #00bea4;
+  }
+
+  .pagination a:hover {
+    background-color: #00BEA4;
+    color: #ffffff  
+  }
+
+  .pagination__link {
+    font-weight: bold;
+  }
+
+  .pagination__link--active a {
+    color: #131715;
+    background: #06f6f6;
+  }
+
+  .pagination__link--disabled a {
+    color: rgb(65, 65, 65);
+    border: 1px solid #272b2a;
+  }
+
+}
+
+@font-face {
+  font-family: 'glaho';
+  src: url('../public/fonts/glaho.ttf');
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fce297;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #CC9600;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #916c03;
+}

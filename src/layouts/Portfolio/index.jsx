@@ -45,7 +45,10 @@ const Index = () => {
             const percentAndUSD = calculateCoinProfitPercentAndUSD(x.price, getCoinMarketData.data.market_data.current_price.usd, x.quantity)
             userPortfolio[index].current_holding_price = current_holding_price
             userPortfolio[index].profitLoss = percentAndUSD
+            userPortfolio[index].current_price = getCoinMarketData.data.market_data.current_price.usd
             current_total_profit.push(current_holding_price)
+          }else{
+            toast('error', 'API კავშირი ვერ მოხერხდა!', 'ცადეთ მოგვიანებით')
           }
         })
       )
@@ -90,7 +93,7 @@ const Index = () => {
     const buyPrice = document.getElementById('buyPrice').value
     const getData = await getCoinData(data.api_symbol)
     if (getData.status === 200) {
-      const info = { status: 200, data, quantity: coinQuantity, price: buyPrice, invested: Number(coinQuantity) * Number(buyPrice), marketData: getData?.data?.market_data }
+      const info = { data, quantity: coinQuantity, price: buyPrice, invested: Number(coinQuantity) * Number(buyPrice), marketData: getData?.data?.market_data }
       let userPortfolio = JSON.parse(localStorage.getItem('userPortfolio'))
       if (!userPortfolio) {
         userPortfolio = []
@@ -212,7 +215,7 @@ const Index = () => {
                       </div>
                     </BodyTd>
                     <BodyTd isLast={index !== userPortfolio.length - 1}>
-                      <Typography>${Number(x.marketData?.current_price?.usd).toLocaleString('en-US')}</Typography>
+                      <Typography>${Number(x.current_price).toLocaleString('en-US')}</Typography>
                     </BodyTd>
                     <BodyTd isLast={index !== userPortfolio.length - 1}>
                       <div className='flex flex-col'>

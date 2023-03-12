@@ -6,11 +6,9 @@ const SemiCircle = ({ value }) => {
 
   useEffect(() => {
     setValueNumber(value)
-    if (value > 0 && value < 15) {
+    if (value > 0 && value < 35) {
       setColor('bg-red-500')
-    } else if (value > 15 && value < 25) {
-      setColor('bg-orange-500')
-    } else if (value > 25 && value < 55) {
+    } else if (value > 35 && value < 55) {
       setColor('bg-yellow-500')
     } else if (value > 55 && value < 75) {
       setColor('bg-green-300')

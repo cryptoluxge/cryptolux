@@ -6,7 +6,7 @@ import { BiCopy } from 'react-icons/bi'
 import { useToast } from 'hooks/useToast'
 import { useState, useEffect } from 'react'
 
-const AddressComponent = ({ address, type, chain, chainId }) => {
+const AddressComponent = ({ short, address, type, chain, chainId }) => {
   const [setChain, setSetChain] = useState('')
   const toast = useToast()
 
@@ -50,7 +50,7 @@ const AddressComponent = ({ address, type, chain, chainId }) => {
   return (
     <div className='flex items-center gap-1'>
       <a href={getExplorerURL(setChain, chainId, type, address)} target='_blank' rel='noreferrer' className='flex items-center gap-1'>
-        <p className='text-md text-primary font-light'>{shortAddress(address, 4)}</p>
+        <p className='text-md text-primary font-light'>{!short ? shortAddress(address, 4) : address}</p>
         <MdOutlineOpenInNew className='text-md text-primary' />
       </a>
       <div onClick={() => copyData()} className='flex'>

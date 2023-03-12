@@ -22,6 +22,7 @@ import Market from './layouts/Market'
 import IFOPage from './layouts/PancakeSwap/IFO'
 import WalletTool from './layouts/Tools/Wallet'
 import EVMWallet from './layouts/Wallet'
+import TokenApprovals from 'layouts/Tools/TokenApprovals'
 
 function App() {
   const location = useLocation()
@@ -65,6 +66,7 @@ function App() {
             <Route path='/evm/token-balance' element={<EVMTokenBalanceChecker />} />
             <Route path='/evm/nft-balance' element={<EVMNftBalanceChecker />} />
             <Route path='/portfolio' element={<Portfolio />} />
+            <Route path='/tool/approvals' element={<TokenApprovals />} />
           </Routes>
         </Sidenav>
       </ToastProvider>

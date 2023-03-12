@@ -36,7 +36,7 @@ export const menuItem = [
         name: 'Aptos',
         key: 'aptos',
         path: '/wallet/aptos',
-      }
+      },
     ],
   },
   {
@@ -163,6 +163,11 @@ export const menuItem = [
         key: 'wallet',
         path: '/tool/wallet',
       },
+      {
+        name: 'Token Approvals',
+        key: 'approvals',
+        path: '/tool/approvals',
+      },
     ],
   },
   {
@@ -178,5 +183,5 @@ export const menuItem = [
     key: 'portfolio',
     name: 'პორტფოლიო',
     icon: PortfolioIcon,
-  }
+  },
 ]

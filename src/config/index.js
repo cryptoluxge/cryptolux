@@ -309,3 +309,5 @@ export const supportedChainsList = {
     logoSize: 'w-4',
   },
 }
+
+export const supportedEVMChains = supportedChains.filter((x) => x.chainType === 'evm')

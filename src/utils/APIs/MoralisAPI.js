@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { supportedEVMChains } from 'config'
 import { supportedChains } from 'config'
-
+import { getTokenMetadata } from 'utils/Helpers/BlockchainHelpers'
 
 export const getNativeTransactions = async (walletAddress, chain) => {
   const json = await axios(`https://deep-index.moralis.io/api/v2/${walletAddress}?chain=${chain}`, {
@@ -72,11 +73,10 @@ export const getMultiwalletNativeBalance = async (walletAddresses) => {
           .then((response) => response)
           .then((data) => data)
 
-
         if (json.status === 200) {
           balances.push({ status: 200, chainSymbol: chain.networkSymbol, chainName: chain.networkName, chainLogo: chain.logo, chainId: chain.chainId, balance: Number(json.data.balance) / 10 ** 18 })
         } else {
-          balances.push({ status: 404, chainSymbol: chain.networkSymbol, chainName: chain.networkName, chainLogo: chain.logo, chainId: chain.chainId, balance: "API ERROR" })
+          balances.push({ status: 404, chainSymbol: chain.networkSymbol, chainName: chain.networkName, chainLogo: chain.logo, chainId: chain.chainId, balance: 'API ERROR' })
         }
       }
       finalData.push({ address: wallet, data: balances })
@@ -145,5 +145,40 @@ export const getMultiWalletNftBalance = async (walletAddresses) => {
     return finalData
   } catch (error) {
     console.log(error)
+  }
+}
+
+export const getTokenApprovals = async (walletAddress, chain) => {
+  let getChainId = 0
+  supportedEVMChains.forEach((x) => {
+    if (x.moralisId === chain) {
+      getChainId = x.chainId
+    }
+  })
+  const json = await axios(`https://deep-index.moralis.io/api/v2/erc20/approvals?chain=${chain}&wallet_addresses[0]=${walletAddress}`, {
+    headers: {
+      'X-API-Key': process.env.REACT_APP_MORALIS_API_KEY,
+    },
+  })
+    .then((response) => response)
+    .then((data) => data)
+
+  const approvedTokens = []
+
+  if (json.status === 200) {
+    if (Object.keys(json.data.result).length > 0) {
+      await Promise.all(
+        json.data.result.map(async (x) => {
+          const approved = x
+          const tokenData = await getTokenMetadata(x.contract_address, chain)
+          approvedTokens.push({ data: approved, tokenData: tokenData })
+        })
+      )
+      return { status: 200, chainId: getChainId, data: approvedTokens }
+    } else {
+      return { status: 200, data: [] }
+    }
+  } else {
+    return { status: 404, data: [] }
   }
 }

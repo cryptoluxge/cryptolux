@@ -23,6 +23,7 @@ import IFOPage from './layouts/PancakeSwap/IFO'
 import WalletTool from './layouts/Tools/Wallet'
 import EVMWallet from './layouts/Wallet'
 import TokenApprovals from 'layouts/Tools/TokenApprovals'
+import AirdropFarmer from 'layouts/AirdropFarmer'
 
 function App() {
   const location = useLocation()
@@ -67,6 +68,7 @@ function App() {
             <Route path='/evm/nft-balance' element={<EVMNftBalanceChecker />} />
             <Route path='/portfolio' element={<Portfolio />} />
             <Route path='/tool/approvals' element={<TokenApprovals />} />
+            <Route path='/airdrops' element={<AirdropFarmer />} />
           </Routes>
         </Sidenav>
       </ToastProvider>

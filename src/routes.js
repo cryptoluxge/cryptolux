@@ -11,6 +11,7 @@ import PancakeSwapIcon from './assets/images/SidebarIcons/PancakeSwapIcon.svg'
 import PortfolioIcon from './assets/images/SidebarIcons/PortfolioIcon.svg'
 import ToolsIcon from './assets/images/SidebarIcons/ToolsIcon.svg'
 import WalletIcon from './assets/images/SidebarIcons/WalletIcon.svg'
+import AirdropIcon from './assets/images/SidebarIcons/AirdropIcon.svg'
 
 export const menuItem = [
   {
@@ -136,6 +137,13 @@ export const menuItem = [
     key: 'bitcoin',
     name: 'Bitcoin',
     icon: BitcoinIcon,
+  },
+  {
+    type: 'noncollapsible',
+    path: '/airdrops',
+    key: 'airdrops',
+    name: 'Airdrops',
+    icon: AirdropIcon,
   },
   {
     type: 'collapsible',

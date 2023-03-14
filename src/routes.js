@@ -161,7 +161,7 @@ export const menuItem = [
   },
   {
     type: 'collapsible',
-    path: '/tool',
+    path: '/tools',
     key: 'tool',
     name: 'ხელსაწყოები',
     icon: ToolsIcon,
@@ -169,12 +169,17 @@ export const menuItem = [
       {
         name: 'საფულე',
         key: 'wallet',
-        path: '/tool/wallet',
+        path: '/tools/wallet',
       },
       {
         name: 'Token Approvals',
         key: 'approvals',
-        path: '/tool/approvals',
+        path: '/tools/approvals',
+      },
+      {
+        name: 'Faucets',
+        key: 'faucets',
+        path: '/tools/faucets',
       },
     ],
   },

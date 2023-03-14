@@ -1,4 +1,5 @@
 import AddressBook from 'layouts/AddressBook'
+import AirdropFarmer from 'layouts/AirdropFarmer'
 import APTAccountChecker from 'layouts/Aptos/AccountChecker'
 import APTBalanceChecker from 'layouts/Aptos/APTBalance'
 import APTNFTChecker from 'layouts/Aptos/NFTBalance'
@@ -9,6 +10,8 @@ import EVMTokenBalanceChecker from 'layouts/EVM/TokenBalanceChecker'
 import EVMWalletChecker from 'layouts/EVM/WalletChecker'
 import Mina from 'layouts/Mina'
 import Portfolio from 'layouts/Portfolio'
+import Faucets from 'layouts/Tools/Faucets'
+import TokenApprovals from 'layouts/Tools/TokenApprovals'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { menuItem } from 'routes'
 import Sidenav from './components/SideNav'
@@ -22,8 +25,6 @@ import Market from './layouts/Market'
 import IFOPage from './layouts/PancakeSwap/IFO'
 import WalletTool from './layouts/Tools/Wallet'
 import EVMWallet from './layouts/Wallet'
-import TokenApprovals from 'layouts/Tools/TokenApprovals'
-import AirdropFarmer from 'layouts/AirdropFarmer'
 
 function App() {
   const location = useLocation()
@@ -55,7 +56,7 @@ function App() {
             <Route path='/wallet/evm' element={<EVMWallet />} />
             <Route path='/wallet/aptos' element={<AptosWallet />} />
             <Route path='/cardano' element={<CardanoWallet />} />
-            <Route path='/tool/wallet' element={<WalletTool />} />
+            <Route path='/tools/wallet' element={<WalletTool />} />
             <Route path='/aptos/wallet' element={<APTAccountChecker />} />
             <Route path='/aptos/balance' element={<APTBalanceChecker />} />
             <Route path='/aptos/tokens' element={<APTTokensChecker />} />
@@ -67,8 +68,9 @@ function App() {
             <Route path='/evm/token-balance' element={<EVMTokenBalanceChecker />} />
             <Route path='/evm/nft-balance' element={<EVMNftBalanceChecker />} />
             <Route path='/portfolio' element={<Portfolio />} />
-            <Route path='/tool/approvals' element={<TokenApprovals />} />
+            <Route path='/tools/approvals' element={<TokenApprovals />} />
             <Route path='/airdrops' element={<AirdropFarmer />} />
+            <Route path='/tools/faucets' element={<Faucets />} />
           </Routes>
         </Sidenav>
       </ToastProvider>

@@ -1,5 +1,6 @@
 import { InjectedConnector } from '@web3-react/injected-connector'
+import { supportedEvmChainsIDs } from 'config'
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [1, 56, 43114, 137, 250, 25, 42161],
+  supportedChainIds: supportedEvmChainsIDs,
 })

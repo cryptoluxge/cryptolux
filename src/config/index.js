@@ -11,6 +11,8 @@ export const APTOS_INDEXER = 'https://indexer.mainnet.aptoslabs.com/v1/graphql'
 
 export const APTOS_MAINNET_NODE_URL = 'https://fullnode.mainnet.aptoslabs.com/v1'
 
+export const supportedEvmChainsIDs = [1, 56, 43114, 137, 250, 25, 42161]
+
 export const supportedChains = [
   {
     chainType: 'evm',

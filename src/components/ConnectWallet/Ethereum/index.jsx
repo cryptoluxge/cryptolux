@@ -6,6 +6,7 @@ import ConnectButton from './ConnectButton'
 import { injected } from './connectors'
 import DisconnectButton from './DisconnectButton'
 import WrongNetwork from './WrongNetwork'
+import { supportedEvmChainsIDs } from 'config'
 
 export default function Modal() {
   const mountedRef = useRef(true)
@@ -54,7 +55,7 @@ export default function Modal() {
 
   return (
     <div className='p-3 flex items-center'>
-      {active && (isConnected === 'true' || connected) ? <div>{[1, 56, 43114, 250, 137, 25, 42161].includes(chainId) || connected ? <DisconnectButton /> : <WrongNetwork changeTo='BSC' text='არასწორი ქსელი' />}</div> : <ConnectButton />}
+      {active && (isConnected === 'true' || connected) ? <div>{supportedEvmChainsIDs.includes(chainId) || connected ? <DisconnectButton /> : <WrongNetwork changeTo='BSC' text='არასწორი ქსელი' />}</div> : <ConnectButton />}
     </div>
   )
 }
